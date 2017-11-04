@@ -184,6 +184,40 @@
 #     print(i.get_text())
 
 
+## 下面的代码就是获取有两个属性的标签：
+## soup.findAll(lambda tag: len(tag.attrs) == 2)
+## 这行代码会找出下面的标签：
+## <div class="body" id="content"></div>
+## <span style="color:red" class="title"></span>
+
+
+
+
+
+
+
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+import re #使用正则？
+NameList = []
+def getNames(ProductList):
+    html = urlopen("https://item.jd.com/"+ProductList+".html")
+    bsObj = BeautifulSoup(html)
+    return bsObj.find("div", {"id":"name"}).findAll("h1")
+
+for x in range(12184523,12184573):
+    NameList += getNames(str(x))
+
+for y in NameList:
+    print(y.get_text())
+
+
+
+
+
+
+
+
 
 
 
