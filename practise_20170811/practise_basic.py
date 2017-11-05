@@ -192,7 +192,9 @@
 
 
 
-
+# Scrapy 就是一个帮你大幅度降低网页链接查找和识别工作复杂度的Python 库，它可以
+# 让你轻松地采集一个或多个域名的信息。不过目前Scrapy 仅支持Python 2.7，还不支持
+# Python 3.x。
 
 
 
@@ -205,7 +207,7 @@ def getNames(ProductList):
     bsObj = BeautifulSoup(html)
     return bsObj.find("div", {"id":"name"}).findAll("h1")
 
-for x in range(12184523,12184623):
+for x in range(12184623,12184723):
     NameList += getNames(str(x))
 
 for y in NameList:
