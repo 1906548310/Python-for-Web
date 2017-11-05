@@ -205,7 +205,7 @@ def getNames(ProductList):
     bsObj = BeautifulSoup(html)
     return bsObj.find("div", {"id":"name"}).findAll("h1")
 
-for x in range(12184523,12184573):
+for x in range(12184523,12184623):
     NameList += getNames(str(x))
 
 for y in NameList:
