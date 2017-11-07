@@ -192,7 +192,9 @@
 
 
 
-
+# Scrapy 就是一个帮你大幅度降低网页链接查找和识别工作复杂度的Python 库，它可以
+# 让你轻松地采集一个或多个域名的信息。不过目前Scrapy 仅支持Python 2.7，还不支持
+# Python 3.x。
 
 
 
@@ -200,16 +202,26 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import re #使用正则？
 NameList = []
+BookName = ""
 def getNames(ProductList):
     html = urlopen("https://item.jd.com/"+ProductList+".html")
     bsObj = BeautifulSoup(html)
-    return bsObj.find("div", {"id":"name"}).findAll("h1")
+    catlog = bsObj.find("div", {"class":"breadcrumb"}).findAll("a", {"clstag":"shangpin|keycount|product|mbNav-2"})
 
-for x in range(12184523,12184573):
-    NameList += getNames(str(x))
+    for x in catlog:
+        BookName = x.get_text()
 
-for y in NameList:
-    print(y.get_text())
+    if BookName == "科普读物":
+        return bsObj.find("div", {"id":"name"}).findAll("h1")
+    else:
+        return []
+
+for y in range(12100000, 12200000):
+    NameList += getNames(str(y))
+
+for z in NameList:
+    print(z.get_text())
+
 
 
 
