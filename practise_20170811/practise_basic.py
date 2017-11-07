@@ -227,7 +227,7 @@ from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
 from bs4 import BeautifulSoup
 NameList = []
-BookName = ""
+# BookName = ""
 def getNames(ProductList):
     try:
         html = urlopen("https://item.jd.com/"+ProductList+".html")
@@ -249,8 +249,9 @@ def getNames(ProductList):
         return ['非图书']
     return title
 
-for y in range(12226949, 12236949):
+for y in range(12126949, 12226949):
     print(getNames(str(y)))
+    print(y)
 
 # for z in NameList:
 #     print(z.get_text())
