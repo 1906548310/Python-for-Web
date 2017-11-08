@@ -251,11 +251,6 @@ for y in range(12226939, 12226949):
     print(getNames(str(y)))
     print(y)
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 61fc0b3ebc42f662981cb57f16a2cebd070caa82
-
 
 
 
