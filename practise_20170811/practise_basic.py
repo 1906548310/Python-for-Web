@@ -249,7 +249,6 @@ def getNames(ProductList):
 
 for y in range(12143691, 12226949):
     print(getNames(str(y)), y)
-    # print(y)
 
 
 
