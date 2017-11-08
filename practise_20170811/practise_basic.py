@@ -232,7 +232,7 @@ def getNames(ProductList):
     try:
         html = urlopen("https://item.jd.com/"+ProductList+".html")
     except (HTTPError, URLError) as e:
-        return ['非页面']
+        return ['找不到页面']
     try:
         bsObj = BeautifulSoup(html.read())
         catlog = bsObj.find("div", {"class": "breadcrumb"}).findAll("a", {"clstag": "shangpin|keycount|product|mbNav-2"})
@@ -241,15 +241,15 @@ def getNames(ProductList):
         if BookName == "科普读物":
             title = bsObj.find("div", {"id":"name"}).findAll("h1")
         else:
-            return ['非科普']
+            return ['非科普读物']
 
     except AttributeError as e:
-        return ['非图书']
+        return ['非图书详情页']
     return title
 
-for y in range(12226939, 12226949):
-    print(getNames(str(y)))
-    print(y)
+for y in range(12143691, 12226949):
+    print(getNames(str(y)), y)
+    # print(y)
 
 
 
