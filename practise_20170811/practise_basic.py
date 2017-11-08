@@ -236,9 +236,7 @@ def getNames(ProductList):
     try:
         bsObj = BeautifulSoup(html.read())
         catlog = bsObj.find("div", {"class": "breadcrumb"}).findAll("a", {"clstag": "shangpin|keycount|product|mbNav-2"})
-
-        for x in catlog:
-            BookName = x.get_text()
+        BookName = catlog[0].get_text()
 
         if BookName == "科普读物":
             title = bsObj.find("div", {"id":"name"}).findAll("h1")
@@ -249,13 +247,9 @@ def getNames(ProductList):
         return ['非图书']
     return title
 
-for y in range(12126949, 12226949):
+for y in range(12226939, 12226949):
     print(getNames(str(y)))
     print(y)
-
-# for z in NameList:
-#     print(z.get_text())
-
 
 
 
