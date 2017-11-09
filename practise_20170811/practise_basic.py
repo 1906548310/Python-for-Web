@@ -244,7 +244,7 @@ def getConcerns(order):
         return ['非问题页']
     return concern
 
-for y in range(20527134, 20527144):
+for y in range(19550225, 10000000000): #知乎第一个问题的序号是19550225
     print(getConcerns(str(y)), y)
 
 
