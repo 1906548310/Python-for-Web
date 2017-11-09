@@ -198,37 +198,54 @@
 
 
 
+# # 爬京东科普图书
+# from urllib.request import urlopen
+# from urllib.error import HTTPError, URLError
+# from bs4 import BeautifulSoup
+# NameList = []
+# def getNames(ProductList):
+#     try:
+#         html = urlopen("https://item.jd.com/"+ProductList+".html")
+#     except (HTTPError, URLError) as e:
+#         return ['找不到页面']
+#     try:
+#         bsObj = BeautifulSoup(html.read())
+#         catlog = bsObj.find("div", {"class": "breadcrumb"}).findAll("a", {"clstag": "shangpin|keycount|product|mbNav-2"})
+#         BookName = catlog[0].get_text()
+#
+#         if BookName == "科普读物":
+#             title = bsObj.find("div", {"id":"name"}).findAll("h1")
+#         else:
+#             return ['非科普读物']
+#
+#     except AttributeError as e:
+#         return ['非图书详情页']
+#     return title
+#
+# for y in range(12223691, 12226949):
+#     print(getNames(str(y)), y)
 
+
+# 爬知乎高关注度问题
 from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
 from bs4 import BeautifulSoup
-NameList = []
-# BookName = ""
-def getNames(ProductList):
+def getConcerns(order):
     try:
-        html = urlopen("https://item.jd.com/"+ProductList+".html")
+        html = urlopen("https://www.zhihu.com/question/"+order)
     except (HTTPError, URLError) as e:
         return ['找不到页面']
     try:
         bsObj = BeautifulSoup(html.read())
-        catlog = bsObj.find("div", {"class": "breadcrumb"}).findAll("a", {"clstag": "shangpin|keycount|product|mbNav-2"})
-        BookName = catlog[0].get_text()
-
-        if BookName == "科普读物":
-            title = bsObj.find("div", {"id":"name"}).findAll("h1")
-        else:
-            return ['非科普读物']
+        concerns = bsObj.findAll("div", {"class": "NumberBoard-value"})
+        concern = concerns[0].get_text()
 
     except AttributeError as e:
-        return ['非图书详情页']
-    return title
+        return ['非问题页']
+    return concern
 
-for y in range(12143691, 12226949):
-    print(getNames(str(y)), y)
-
-
-
-
+for y in range(20527134, 20527144):
+    print(getConcerns(str(y)), y)
 
 
 
