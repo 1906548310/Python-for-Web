@@ -202,6 +202,7 @@
 from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
 from bs4 import BeautifulSoup
+import re #引入正则表达式
 NameList = []
 def getNames(ProductList):
     try:
