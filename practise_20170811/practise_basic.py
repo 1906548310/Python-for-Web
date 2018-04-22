@@ -198,37 +198,43 @@
 
 
 
-# 爬京东科普图书
+# # 爬京东科普图书
+# from urllib.request import urlopen
+# from urllib.error import HTTPError, URLError
+# from bs4 import BeautifulSoup
+# import re #引入正则表达式
+# NameList = []
+# def getNames(ProductList):
+#     try:
+#         html = urlopen("https://item.jd.com/"+ProductList+".html")
+#     except (HTTPError, URLError) as e:
+#         return ['找不到页面']
+#     try:
+#         bsObj = BeautifulSoup(html.read())
+#         catlog = bsObj.find("div", {"class": "breadcrumb"}).findAll("a", {"clstag": "shangpin|keycount|product|mbNav-2"})
+#         BookName = catlog[0].get_text()
+#         # images = bsObj.findAll("img", {"src": re.compile("\.\.\/img\/gifts\/img.*\.jpg")}) #使用正则表达式示例
+#
+#         if BookName == "科普读物":
+#             title = bsObj.find("div", {"id":"name"}).findAll("h1")
+#         else:
+#             return ['非科普读物']
+#
+#     except AttributeError as e:
+#         return ['非图书详情页']
+#     return title
+#
+# for y in range(12223691, 12226949):
+#     print(getNames(str(y)), y)
+
+
 from urllib.request import urlopen
-from urllib.error import HTTPError, URLError
 from bs4 import BeautifulSoup
-import re #引入正则表达式
-NameList = []
-def getNames(ProductList):
-    try:
-        html = urlopen("https://item.jd.com/"+ProductList+".html")
-    except (HTTPError, URLError) as e:
-        return ['找不到页面']
-    try:
-        bsObj = BeautifulSoup(html.read())
-        catlog = bsObj.find("div", {"class": "breadcrumb"}).findAll("a", {"clstag": "shangpin|keycount|product|mbNav-2"})
-        BookName = catlog[0].get_text()
-        # images = bsObj.findAll("img", {"src": re.compile("\.\.\/img\/gifts\/img.*\.jpg")}) #使用正则表达式示例
-
-        if BookName == "科普读物":
-            title = bsObj.find("div", {"id":"name"}).findAll("h1")
-        else:
-            return ['非科普读物']
-
-    except AttributeError as e:
-        return ['非图书详情页']
-    return title
-
-for y in range(12223691, 12226949):
-    print(getNames(str(y)), y)
-
-
-
+html = urlopen("http://www.pythonscraping.com/pages/page3.html")
+bsObj = BeautifulSoup(html)
+soup = bsObj.findAll(lambda tag : len(tag.attrs) == 1)
+for i in soup:
+    print(i)
 
 
 
