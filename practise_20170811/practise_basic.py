@@ -213,6 +213,7 @@ def getNames(ProductList):
         bsObj = BeautifulSoup(html.read())
         catlog = bsObj.find("div", {"class": "breadcrumb"}).findAll("a", {"clstag": "shangpin|keycount|product|mbNav-2"})
         BookName = catlog[0].get_text()
+        # images = bsObj.findAll("img", {"src": re.compile("\.\.\/img\/gifts\/img.*\.jpg")}) #使用正则表达式示例
 
         if BookName == "科普读物":
             title = bsObj.find("div", {"id":"name"}).findAll("h1")
