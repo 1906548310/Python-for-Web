@@ -173,7 +173,6 @@
 
 # #没有防中断措施的代码
 # from urllib.request import urlopen
-# from urllib.error import HTTPError, URLError
 # from bs4 import BeautifulSoup
 # html = urlopen("https://1906548310.github.io/index.html")
 # bsObj = BeautifulSoup(html.read())
@@ -202,7 +201,7 @@
 # from urllib.request import urlopen
 # from urllib.error import HTTPError, URLError
 # from bs4 import BeautifulSoup
-# import re #引入正则表达式
+# # import re  #引入正则表达式
 # NameList = []
 # def getNames(ProductList):
 #     try:
@@ -227,7 +226,82 @@
 # for y in range(12223691, 12226949):
 #     print(getNames(str(y)), y)
 
+# # 使用lambda
+# from urllib.request import urlopen
+# from bs4 import BeautifulSoup
+# html = urlopen("http://www.pythonscraping.com/pages/page3.html")
+# bsObj = BeautifulSoup(html)
+# soup = bsObj.findAll(lambda tag : len(tag.attrs) == 2)
+# for i in soup:
+#     print(i)
 
+# # 存储媒体数据
+# import os
+# from urllib.request import urlretrieve
+# from urllib.request import urlopen
+# from bs4 import BeautifulSoup
+# downloadDirectory = "downloaded"
+# baseUrl = "http://pythonscraping.com"
+# def getAbsoluteURL(baseUrl, source):
+#     if source.startswith("http://www."):
+#         url = "http://"+source[11:]
+#     elif source.startswith("http://"):
+#         url = source
+#     elif source.startswith("www."):
+#         url = "http://"+source[4:]
+#     else:
+#         url = baseUrl+"/"+source
+#     if baseUrl not in url:
+#         return None
+#     return url
+# def getDownloadPath(baseUrl, absoluteUrl, downloadDirectory):
+#     path = absoluteUrl.replace("www.", "").replace("?",".")
+#     # 上面的“.replace("?",".")”是我新加的，因为Windows里的文件名不允许出现“？”这类特殊字符
+#     path = path.replace(baseUrl, "")
+#     path = downloadDirectory+path
+#     directory = os.path.dirname(path)
+#     if not os.path.exists(directory):
+#         os.makedirs(directory)
+#     return path
+# html = urlopen(baseUrl)
+# bsObj = BeautifulSoup(html)
+# downloadList = bsObj.findAll(src=True)
+# for download in downloadList:
+#     fileUrl = getAbsoluteURL(baseUrl, download["src"])
+#     if fileUrl is not None:
+#         print(fileUrl)
+#         urlretrieve(fileUrl, getDownloadPath(baseUrl, fileUrl, downloadDirectory))
+
+
+# #Python操作CSV文件
+# import csv
+# csvFile = open("../files/test.csv", 'w+')
+# try:
+#     writer = csv.writer(csvFile)
+#     writer.writerow(('number', 'number plus 2', 'number times 2'))
+#     for i in range(10):
+#         writer.writerow( (i, i+2, i*2))
+# finally:
+#     csvFile.close()
+
+# # Python发邮件，未实现55555
+# import smtplib
+# from email.mime.text import MIMEText
+# msg = MIMEText("The body of the email is here.")
+# msg['Subject'] = "An Email Alert"
+# msg['From'] = "1906548310@qq.com"
+# msg['To'] = "mike_guqiang@163.com"
+# s = smtplib.SMTP('localhost')
+# s.send_message(msg)
+# s.quit()
+
+
+
+
+
+
+
+<<<<<<< HEAD
 # from urllib.request import urlopen
 # from bs4 import BeautifulSoup
 # html = urlopen("http://www.pythonscraping.com/pages/page3.html")
@@ -235,6 +309,8 @@
 # soup = bsObj.findAll(lambda tag : len(tag.attrs) == 1)
 # for i in soup:
 #     print(i)
+=======
+>>>>>>> d47ea90600f343211314dad2f41f3b436dd81fa6
 
 
 
