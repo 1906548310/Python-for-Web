@@ -16,7 +16,8 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import csv
-csvFile = open("../../../../../E215Gu/desktop/JD_jg_top100.csv", 'w+')  #如果让行与行之间没有空行，就加上：, newline=''
+# csvFile = open("../../../../../E215Gu/desktop/JD_jg_top100.csv", 'w+')  #如果让行与行之间没有空行，就加上：, newline=''
+csvFile = open("../JD_jg_top100.txt", 'w+')
 
 nameList = []
 for m in range(5):
