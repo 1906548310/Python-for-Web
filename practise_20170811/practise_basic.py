@@ -228,13 +228,13 @@
 #     print(getNames(str(y)), y)
 
 
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-html = urlopen("http://www.pythonscraping.com/pages/page3.html")
-bsObj = BeautifulSoup(html)
-soup = bsObj.findAll(lambda tag : len(tag.attrs) == 1)
-for i in soup:
-    print(i)
+# from urllib.request import urlopen
+# from bs4 import BeautifulSoup
+# html = urlopen("http://www.pythonscraping.com/pages/page3.html")
+# bsObj = BeautifulSoup(html)
+# soup = bsObj.findAll(lambda tag : len(tag.attrs) == 1)
+# for i in soup:
+#     print(i)
 
 
 
