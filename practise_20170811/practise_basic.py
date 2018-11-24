@@ -301,20 +301,6 @@
 
 
 
-<<<<<<< HEAD
-# from urllib.request import urlopen
-# from bs4 import BeautifulSoup
-# html = urlopen("http://www.pythonscraping.com/pages/page3.html")
-# bsObj = BeautifulSoup(html)
-# soup = bsObj.findAll(lambda tag : len(tag.attrs) == 1)
-# for i in soup:
-#     print(i)
-=======
->>>>>>> d47ea90600f343211314dad2f41f3b436dd81fa6
-
-
-
-
 
 
 
