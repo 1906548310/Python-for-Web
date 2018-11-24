@@ -173,7 +173,6 @@
 
 # #没有防中断措施的代码
 # from urllib.request import urlopen
-# from urllib.error import HTTPError, URLError
 # from bs4 import BeautifulSoup
 # html = urlopen("https://1906548310.github.io/index.html")
 # bsObj = BeautifulSoup(html.read())
