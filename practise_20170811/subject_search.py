@@ -8,6 +8,7 @@ from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
 from bs4 import BeautifulSoup
 import csv
+import requests
 csvFile = open("../subject_douban_search.csv", 'w+', newline='')
 writer = csv.writer(csvFile)
 writer.writerow(['书名', '作者名', '评分'])
