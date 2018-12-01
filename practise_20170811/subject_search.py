@@ -25,12 +25,12 @@ def getNames(ProductList):
             WriterName = "不详"
         else:
             WriterName = WriterName[0].get_text().replace('\n            ', '').replace('    ', '')
-        Score= bsObj.find("strong", {"property": "v:average"}).get_text().strip()
+        Score= bsObj.find("strong", {"property": "v:average"}).get_text()
 
     except AttributeError as e:
         return ['非图书详情页']
     return BookName, WriterName, Score, url_origin
 
-for y in range(10391001, 10391005):
+for y in range(1039100, 1039105):
     writer.writerow(getNames(str(y)))
     print(getNames(str(y)), y)
